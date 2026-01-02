@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프리랜서 인건비 최적화 시뮬레이터</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>프리랜서 인건비 최적화 시뮬레이터</h1>
+            <p class="subtitle">2025-2026 최신 세무·건강보험 규정 적용</p>
+        </header>
+
+        <div class="info-section">
+            <h2>📊 시뮬레이터 사용 가이드</h2>
+            <ul>
+                <li><strong>합계 금액의 마법:</strong> 맨 아래 추가 3.3% 금액의 합계가 장부에 비용으로 기록될 금액입니다. 이 금액이 5,820만 원을 넘어야 대표님의 이익이 5,000만 원 이하(15% 세율)로 떨어집니다.</li>
+                <li><strong>ISA 서민형 판정:</strong> 4대보험자의 경우 근로소득공제를 적용한 근로소득금액 + 사업소득금액으로 종합소득금액을 계산합니다. 간이사업자/피부양자는 기존 연봉/매출 + 사업소득금액으로 계산합니다.</li>
+                <li><strong>건보료 경고등:</strong> 추가 건보료 열에 "탈락"이나 금액이 표시되면 해당 인원에게 미리 공지하거나 금액을 조절하세요.</li>
+                <li><strong>실질 순수익:</strong> 마지막 열은 알바생이 세금과 건보료를 다 떼고 실제로 손에 쥐는 돈입니다.</li>
+            </ul>
+        </div>
+
+        <div class="controls">
+            <button id="addRowBtn" class="btn btn-primary">+ 행 추가</button>
+            <button id="resetBtn" class="btn btn-secondary">초기화</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="simulatorTable">
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>구분 (기존 소득)</th>
+                        <th>기존 연봉/매출<br>(만원)</th>
+                        <th>사업자소득<br>(만원)</th>
+                        <th>추가 3.3% 금액<br>(만원)</th>
+                        <th>사업소득금액 (A)<br>(만원)</th>
+                        <th>합산 소득금액 (B)<br>(만원)</th>
+                        <th>ISA 서민형</th>
+                        <th>추가 건보료</th>
+                        <th>5월 추가 소득세<br>(만원)</th>
+                        <th>실질 순수익<br>(만원)</th>
+                        <th>삭제</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- 행들이 여기에 동적으로 추가됩니다 -->
+                </tbody>
+                <tfoot>
+                    <tr id="totalRow">
+                        <td colspan="3"><strong>합계</strong></td>
+                        <td id="totalBusinessIncomeInput" class="total-cell">0</td>
+                        <td id="totalAdditional" class="total-cell">0</td>
+                        <td id="totalBusinessIncome" class="total-cell">0</td>
+                        <td id="totalCombinedIncome" class="total-cell">0</td>
+                        <td>-</td>
+                        <td id="totalHealthInsurance" class="total-cell">0</td>
+                        <td id="totalAdditionalTax" class="total-cell">0</td>
+                        <td id="totalNetIncome" class="total-cell">0</td>
+                        <td>-</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="constants-info">
+            <h3>2025-2026 적용 상수값</h3>
+            <ul>
+                <li>단순경비율: 64.1%</li>
+                <li>건강보험 요율: 7.09%</li>
+                <li>ISA 서민형 기준: 종합소득금액 3,800만 원 이하</li>
+                <li>직장인 건보료 부과 기준: 월급 외 소득 연 2,000만 원 초과</li>
+                <li>피부양자 자격 상실 기준: 사업소득금액 500만 원 초과 (기존 연봉/매출도 사업소득으로 포함)</li>
+                <li>소득세율: 종합소득금액 2,400만 원 이하 15%, 초과 시 24%</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
